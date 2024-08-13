@@ -5,7 +5,25 @@
 </head>
 <body>
 <h1>User, welcome spring boot security page!</h1>
-
-
+<br><br>
+<a th:href="@{/logout}">Logout</a>
+<br><br>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Authorities</th>
+        <th>Age</th>
+        <th>Role</th>
+    </tr>
+    <tr th:object="${user}">
+        <td th:utext="${user.getId}">id</td>
+        <td th:utext="${user.getUsername()}">Name</td>
+        <td th:utext="${user.getAuthorities()}">Authorities</td>
+        <td th:utext="${user.getAge()}">Age</td>
+        <td><span th:each="roles : ${user.getRoles()}" th:utext= "${roles.toString()}+'<br>  '">Roles</span></td>
+    </tr>
+</table>
+<p>User: <strong th:text="${user.username}"></strong></p>
 </body>
 </html>
